@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>فروشگاه وید</title>
+<style>
+:root{--bg:#eef3e4;--card:#fffdf5;--tx:#1d2a17;--mut:#6c7a5f;--ac:#3d8b2f;--hot:#e8871e;--bd:#cfdab8;--bad:#c8433a;--bar:#dfe8cc;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a10;--card:#1b2618;--tx:#e9f0dc;--mut:#93a285;--ac:#7bd35a;--hot:#ffa63d;--bd:#2c3b27;--bad:#ff7168;--bar:#26331f}}
+:root[data-theme="dark"]{--bg:#121a10;--card:#1b2618;--tx:#e9f0dc;--mut:#93a285;--ac:#7bd35a;--hot:#ffa63d;--bd:#2c3b27;--bad:#ff7168;--bar:#26331f}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font-family:Vazirmatn,Tahoma,"Segoe UI",sans-serif}
+body{padding-bottom:84px;min-height:100vh}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:6px;padding:10px;background:var(--bg);border-bottom:2px solid var(--bd)}
+.top div{flex:1;background:var(--card);border:2px solid var(--bd);border-radius:12px;padding:6px 4px;text-align:center;font-weight:700;font-size:14px}
+.top small{display:block;font-weight:400;color:var(--mut);font-size:11px}
+main{padding:12px;max-width:560px;margin:auto}
+h2{font-size:17px;margin:4px 0 10px}
+.card{background:var(--card);border:2px solid var(--bd);border-radius:16px;padding:12px;margin-bottom:10px}
+.row{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.pot{min-height:96px}
+.em{font-size:34px}
+.bar{height:12px;background:var(--bar);border-radius:8px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;background:var(--ac);width:0}
+button{font:inherit;font-weight:700;border:0;border-radius:12px;padding:10px 14px;background:var(--ac);color:#fff;cursor:pointer;min-height:44px}
+.dk button{color:#10200b}
+@media(prefers-color-scheme:dark){button{color:#10200b}}
+button.o{background:var(--hot);color:#2a1700}
+button.g{background:transparent;color:var(--tx);border:2px solid var(--bd)}
+button:disabled{opacity:.4}
+button:active{transform:scale(.97)}
+.chips{display:flex;gap:6px;overflow-x:auto;margin-bottom:10px}
+.chip{white-space:nowrap;padding:8px 12px;border-radius:20px;border:2px solid var(--bd);background:var(--card);font-weight:700;font-size:13px;cursor:pointer}
+.chip.on{border-color:var(--ac);background:var(--ac);color:#fff}
+@media(prefers-color-scheme:dark){.chip.on{color:#10200b}}
+.mut{color:var(--mut);font-size:13px}
+.big{font-size:44px;font-weight:800;line-height:1.1}
+.up{color:var(--ac)}.dn{color:var(--bad)}
+nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:var(--card);border-top:2px solid var(--bd);padding-bottom:env(safe-area-inset-bottom,0px);z-index:6}
+nav b{flex:1;text-align:center;padding:10px 0 8px;font-size:12px;color:var(--mut);cursor:pointer}
+nav b span{display:block;font-size:22px}
+nav b.on{color:var(--hot)}
+#toast{position:fixed;top:78px;left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:8px 16px;border-radius:20px;font-size:13px;opacity:0;transition:opacity .25s;z-index:9;pointer-events:none}
+#ov{position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:20;display:none;align-items:center;justify-content:center}
+#stage{position:relative;width:min(92vw,380px);height:min(78vh,520px);background:var(--card);border:2px solid var(--bd);border-radius:20px;overflow:hidden;touch-action:none;user-select:none;-webkit-user-select:none}
+.x{position:absolute;top:8px;left:8px;z-index:5;min-height:36px;padding:4px 12px}
+.msg{position:absolute;top:14px;right:14px;left:64px;font-weight:700;font-size:14px}
+.bud{position:absolute;font-size:42px;transform:translate(-50%,-50%);transition:top .5s,opacity .5s;z-index:2}
+.bud.fall{top:105%!important;opacity:0}
+.pk{transition:none;cursor:grab;touch-action:none}
+.stalk{position:absolute;left:50%;bottom:100px;width:8px;height:55%;background:var(--ac);transform:translateX(-50%);border-radius:4px}
+.potem{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:100px;line-height:1}
+#sc{position:absolute;font-size:46px;pointer-events:none;transform:translate(-50%,-50%) rotate(-30deg);z-index:4}
+#bag{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);width:210px;height:170px;border:3px solid var(--ac);border-top-style:dashed;border-radius:6px 6px 26px 26px;background:rgba(120,200,90,.15);display:flex;flex-wrap:wrap;align-content:flex-end;justify-content:center;padding-bottom:10px;font-weight:800}
+#bag span{width:100%;text-align:center}
+#bag i{font-style:normal;font-size:30px}
+#lid{position:absolute;bottom:270px;left:50%;transform:translateX(-50%);width:230px;height:42px;background:var(--hot);color:#2a1700;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;transition:bottom .5s;cursor:pointer;z-index:3}
+#lid.shut{bottom:196px}
+body{background:radial-gradient(circle at 15% 0,rgba(61,139,47,.2),transparent 55%),radial-gradient(circle at 100% 100%,rgba(232,135,30,.12),transparent 50%),var(--bg);background-attachment:fixed}
+h2{border-right:5px solid var(--hot);padding-right:8px;border-radius:2px}
+.card{border-radius:18px;box-shadow:0 3px 0 var(--bd)}
+.top div{border-radius:14px;box-shadow:0 2px 0 var(--bd)}
+button{background:linear-gradient(180deg,var(--ac),color-mix(in srgb,var(--ac) 72%,#000));box-shadow:0 3px 0 rgba(0,0,0,.28);transition:transform .08s,box-shadow .08s}
+button.o{background:linear-gradient(180deg,var(--hot),color-mix(in srgb,var(--hot) 75%,#000))}
+button.g{box-shadow:none}
+button:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(0,0,0,.28)}
+.bar{height:14px;border-radius:10px;box-shadow:inset 0 2px 3px rgba(0,0,0,.18)}
+.bar i{background:repeating-linear-gradient(135deg,var(--ac) 0 10px,color-mix(in srgb,var(--ac) 78%,#fff) 10px 20px);background-size:28px 28px;border-radius:10px;transition:width .25s linear;animation:mv 1s linear infinite}
+@keyframes mv{to{background-position:28px 0}}
+.pot .em{background:var(--bar);width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:30px;flex:none}
+.ready{border-color:var(--hot);animation:gl 1.6s ease-in-out infinite}
+@keyframes gl{50%{box-shadow:0 3px 0 var(--bd),0 0 0 5px rgba(232,135,30,.28)}}
+nav{border-radius:22px 22px 0 0;box-shadow:0 -4px 16px rgba(0,0,0,.14)}
+nav b.on{font-weight:800}
+nav b.on span{transform:translateY(-3px) scale(1.18);transition:transform .15s}
+.chip{box-shadow:0 2px 0 var(--bd)}
+#stage{background:radial-gradient(circle at 50% 100%,rgba(120,200,90,.28),transparent 70%),var(--card)}
+.bud{filter:drop-shadow(0 3px 4px rgba(0,0,0,.3))}
+#sc{filter:drop-shadow(0 4px 4px rgba(0,0,0,.35))}
+#bag{background:linear-gradient(180deg,rgba(120,200,90,.08),rgba(120,200,90,.3))}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+.bd{transition:transform .5s,opacity .5s}
+.bd.fall{transform:translateY(90px);opacity:0}
+#sc{line-height:0}
+.pk svg,.bud svg{pointer-events:none;display:block}
+.pot .em svg{display:block}
+.sci{display:flex;flex:none;background:var(--bar);border-radius:16px;padding:6px}
+.coll{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px}
+.ci{position:relative;flex:none;width:72px;text-align:center;padding:8px 4px;border-radius:14px;border:2px solid var(--bd);background:var(--bar)}
+.ci small{display:block;font-size:11px;font-weight:700;margin-top:2px;padding-bottom:2px}
+.ci.lk svg{filter:grayscale(1) brightness(.6)!important;opacity:.55}
+.ci em{position:absolute;top:2px;left:4px;font-style:normal;font-size:12px}
+body{background:radial-gradient(circle at 15% 0,color-mix(in srgb,var(--ac) 22%,transparent),transparent 55%),radial-gradient(circle at 100% 100%,color-mix(in srgb,var(--hot) 14%,transparent),transparent 50%),var(--bg);background-attachment:fixed}
+:root[data-theme=dark] button,:root[data-theme=dark] .chip.on{color:#10200b}
+:root[data-theme=light] button,:root[data-theme=light] .chip.on{color:#fff}
+:root[data-theme] button.g{color:var(--tx)}
+:root[data-theme=light] button.o{color:#2a1700}
+nav b{position:relative}
+.bdg{position:absolute;top:2px;right:calc(50% - 24px);background:var(--bad);color:#fff;border-radius:10px;font-size:10px;font-style:normal;padding:0 6px;font-weight:800}
+.av{font-size:32px;line-height:1}
+.bub{background:var(--bar);border-radius:14px 14px 14px 4px;padding:10px 12px;margin:8px 0;font-size:14px}
+.sm{padding:8px 12px;min-height:40px}
+.bar i{animation:none;background:var(--ac)}
+.ready{animation:none}
+.bud,#sc{filter:none}
+body{background-attachment:scroll}
+.zb{position:relative;border-radius:8px 8px 22px 22px;border:2px solid rgba(150,180,200,.8);background:linear-gradient(135deg,rgba(255,255,255,.4),rgba(255,255,255,.06) 55%,rgba(255,255,255,.22)),color-mix(in srgb,var(--sc,#6bc84a) 20%,transparent);box-shadow:inset 0 0 14px rgba(255,255,255,.3),0 3px 0 var(--bd)}
+.zb:before{content:'';position:absolute;top:5px;left:50%;width:14px;height:9px;margin-left:-7px;border:2px solid rgba(150,180,200,.9);border-radius:50%}
+.zb .zr{position:absolute;left:-2px;right:-2px;top:24px;height:11px;background:repeating-linear-gradient(90deg,#9db4c2 0 5px,#d6e3ea 5px 10px);border-top:2px solid #7f98a8;border-bottom:2px solid #7f98a8}
+.zb .zr.shut{background:repeating-linear-gradient(90deg,#2f8fd0 0 5px,#8fd4f7 5px 10px);border-color:#1f6fa8}
+.zb .in{position:absolute;top:42px;left:6px;right:6px;bottom:28px;display:flex;flex-wrap:wrap;align-content:flex-end;justify-content:center;font-size:22px;line-height:1}
+.zb .in i{font-style:normal}
+.zb .lab{position:absolute;bottom:6px;left:10px;right:10px;background:#fff;color:#222;border-radius:5px;text-align:center;font-size:11px;font-weight:800;padding:2px 0}
+.zb.big{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);width:230px;height:210px}
+.zb.big .in{font-size:34px;top:50px}
+#zh{display:none;position:absolute;top:-6px;left:2px;width:30px;height:22px;border-radius:7px;background:linear-gradient(#ffd24a,#e0a800);color:#5a3b00;align-items:center;justify-content:center;font-weight:800;cursor:grab;touch-action:none;box-shadow:0 2px 0 rgba(0,0,0,.3);z-index:2}
+.sh{display:flex;gap:12px;overflow-x:auto;padding:10px 2px}
+.sh .zb{width:100px;height:140px;cursor:pointer;margin-bottom:6px}
+.zb.e{opacity:.45;filter:grayscale(.6)}
+</style>
+</head>
+<body>
+<div class="top" id="top"></div>
+<main id="main"></main>
+<div id="toast"></div>
+<div id="ov"><div id="stage"></div></div>
+<nav id="nav"></nav>
+<script>
+const ST=[{n:'کلاسیک',e:'🌿',c:0,t:60,y:8,p:1},{n:'کوش',e:'🍃',c:120,t:120,y:20,p:5},{n:'هیز',e:'🌱',c:500,t:180,y:40,p:20},{n:'پرپل',e:'💜',c:2000,t:300,y:90,p:80}];
+const POTC=[0,0,80,200,500,1200],MAXL=10,BAG=10;
+const N=x=>(Math.round(x*10)/10).toLocaleString('fa-IR');
+let G,tab='pots';
+try{G=JSON.parse(localStorage.getItem('wg1'))}catch(e){}
+if(!G||!G.pots)G={m:30,raw:0,bags:0,sc:0,pl:0,seeds:[1,0,0,0],pots:[null,null,null,null,null,null],np:2,price:40,hist:[40],next:Date.now()+60000,sel:0};
+const save=()=>{try{localStorage.setItem('wg1',JSON.stringify(G))}catch(e){}};
+const Y=s=>ST[s].y*1.15**G.sc;
+const D=s=>ST[s].t*0.85**G.pl*1000;
+const scC=()=>Math.round(40*1.9**G.sc), plC=()=>Math.round(60*2**G.pl);
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.style.opacity=1;clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.opacity=0,1400)}
+function stepPrice(){let p=G.price;p+=(45-p)*0.15;p*=0.75+Math.random()*0.5;G.price=Math.max(15,Math.min(120,Math.round(p)));G.hist.push(G.price);if(G.hist.length>20)G.hist.shift();G.next+=60000}
+let n0=0;while(Date.now()>=G.next&&n0++<30)stepPrice();
+if(Date.now()>=G.next)G.next=Date.now()+60000;
+
+function plant(i){const s=G.sel,c=ST[s].p;if(G.m<c)return toast('پول کافی نداری');G.m-=c;G.pots[i]={t:Date.now(),s:s,d:D(s)};save();render()}
+function cut(i){const p=G.pots[i];G.raw+=Y(p.s);G.pots[i]=null;toast('✂️ +'+N(Y(p.s))+' گرم');save();render()}
+function pack(all){let k=all?Math.floor(G.raw/BAG):(G.raw>=BAG?1:0);if(!k)return toast('حداقل ۱۰ گرم لازمه');G.raw-=k*BAG;G.bags+=k;toast('📦 '+k+' کیسه پک شد');save();render()}
+function sell(all){const k=all?G.bags:Math.min(1,G.bags);if(!k)return toast('کیسه‌ای نداری');G.bags-=k;G.m+=k*G.price;toast('💰 +'+(k*G.price).toLocaleString('fa-IR')+'$');save();render()}
+function buyPot(){const c=POTC[G.np];if(G.m<c)return toast('پول کافی نداری');G.m-=c;G.np++;save();render()}
+function upS(){const c=scC();if(G.m<c||G.sc>=MAXL)return toast('نمیشه');G.m-=c;G.sc++;save();render()}
+function upP(){const c=plC();if(G.m<c||G.pl>=MAXL)return toast('نمیشه');G.m-=c;G.pl++;save();render()}
+function unlock(k){const c=ST[k].c;if(G.m<c)return toast('پول کافی نداری');G.m-=c;G.seeds[k]=1;G.sel=k;save();render()}
+function pick(k){G.sel=k;save();render()}
+function go(t){tab=t;render()}
+function openOv(h){document.getElementById('ov').style.display='flex';const s=document.getElementById('stage');s.innerHTML='<button class="g x" onclick="closeOv()">✕</button>'+h;s.onpointermove=s.onpointerdown=null;return s}
+function closeOv(){document.getElementById('ov').style.display='none'}
+function startCut(i){
+ const p=G.pots[i],B=[[30,28],[70,26],[22,50],[78,48],[42,38],[60,36]];let left=B.length;
+ const s=openOv('<div class="msg" id="msg"></div><div class="stalk"></div><div class="potem">🪴</div>'+B.map(b=>`<div class="bud" style="left:${b[0]}%;top:${b[1]}%">🌿</div>`).join('')+'<div id="sc" style="left:85%;top:80%">✂️</div>');
+ const msg=()=>document.getElementById('msg').textContent='✂️ قیچی رو روی گل‌ها بکش · باقی‌مانده: '+left.toLocaleString('fa-IR');msg();
+ const mv=e=>{const r=s.getBoundingClientRect(),sc=document.getElementById('sc');sc.style.left=(e.clientX-r.left)+'px';sc.style.top=(e.clientY-r.top)+'px';
+  s.querySelectorAll('.bud:not(.fall)').forEach(b=>{const q=b.getBoundingClientRect();
+   if(Math.hypot(e.clientX-(q.left+q.width/2),e.clientY-(q.top+q.height/2))<36){b.classList.add('fall');left--;msg();
+    if(left==0)setTimeout(()=>{G.raw+=Y(p.s);G.pots[i]=null;save();closeOv();toast('✂️ +'+N(Y(p.s))+' گرم وید');render()},600)}})};
+ s.onpointermove=s.onpointerdown=mv;
+}
+function startPack(){
+ if(G.raw<BAG)return toast('حداقل ۱۰ گرم لازمه');
+ const n=5;let pk=0;
+ const s=openOv('<div class="msg" id="msg">گل‌ها رو بکش تو کیسه 👇</div>'+Array.from({length:n},(_,k)=>`<div class="bud pk" style="left:${18+k*16}%;top:${20+(k%2)*13}%">🌿</div>`).join('')+'<div id="bag"><span id="bc">۰/۵</span></div><div id="lid" style="display:none">🔒 درشو ببند</div>');
+ const drop=b=>{b.remove();pk++;document.getElementById('bag').insertAdjacentHTML('afterbegin','<i>🌿</i>');
+  document.getElementById('bc').textContent=pk.toLocaleString('fa-IR')+'/'+n.toLocaleString('fa-IR');
+  if(pk==n){document.getElementById('msg').textContent='حالا درشو ببند 👆';const l=document.getElementById('lid');l.style.display='flex';
+   l.onclick=()=>{l.classList.add('shut');l.textContent='✅ بسته شد';setTimeout(()=>{G.raw-=BAG;G.bags++;save();closeOv();toast('📦 یه کیسه پک شد');render()},700)}}};
+ s.querySelectorAll('.pk').forEach(b=>{let dr=0,mv=0;
+  b.onpointerdown=e=>{dr=1;mv=0;b.setPointerCapture(e.pointerId);b.style.zIndex=3};
+  b.onpointermove=e=>{if(!dr)return;mv++;const r=s.getBoundingClientRect();b.style.left=(e.clientX-r.left)+'px';b.style.top=(e.clientY-r.top)+'px'};
+  b.onpointerup=e=>{if(!dr)return;dr=0;const q=document.getElementById('bag').getBoundingClientRect();
+   if(mv<3||(e.clientX>q.left&&e.clientX<q.right&&e.clientY>q.top&&e.clientY<q.bottom))drop(b)}});
+}
+
+function render(){
+ document.getElementById('top').innerHTML=`<div>💰 ${G.m.toLocaleString('fa-IR')}$<small>پول</small></div><div>🌿 ${N(G.raw)}<small>گرم وید</small></div><div>📦 ${G.bags.toLocaleString('fa-IR')}<small>کیسه</small></div>`;
+ document.getElementById('nav').innerHTML=[['pots','🪴','گلدون‌ها'],['shop','🛒','فروشگاه'],['pack','📦','پک'],['mkt','📈','بازار']].map(t=>`<b class="${tab==t[0]?'on':''}" onclick="go('${t[0]}')"><span>${t[1]}</span>${t[2]}</b>`).join('');
+ let h='';
+ if(tab=='pots'){
+  h+='<h2>دانه‌ی انتخابی</h2><div class="chips">'+ST.map((s,k)=>G.seeds[k]?`<div class="chip ${G.sel==k?'on':''}" onclick="pick(${k})">${s.e} ${s.n}</div>`:'').join('')+'</div>';
+  for(let i=0;i<G.np;i++){const p=G.pots[i];
+   if(!p)h+=`<div class="card pot row"><div class="row"><span class="em">${plantSVG(G.sel,'empty')}</span><span style="display:none">🪴</span><div><b>گلدون ${(i+1).toLocaleString('fa-IR')}</b><div class="mut">خالیه</div></div></div><button onclick="plant(${i})">بکار ${ST[G.sel].e} (${ST[G.sel].p}$)</button></div>`;
+   else if(Date.now()-p.t>=p.d)h+=`<div class="card pot row ready"><div class="row"><span class="em">${plantSVG(p.s,'ready')}</span><div><b>${ST[p.s].n} آماده‌ست</b><div class="mut">${N(Y(p.s))} گرم</div></div></div><button class="o" onclick="startCut(${i})">✂️ قیچی کن</button></div>`;
+   else h+=`<div class="card pot"><div class="row"><div class="row"><span class="em">${plantSVG(p.s,'young')}</span><span style="display:none">🌱</span><b>${ST[p.s].n}</b></div><span class="mut" id="t${i}"></span></div><div class="bar"><i id="b${i}"></i></div></div>`;
+  }
+  if(G.np<6)h+=`<div class="card row"><div><b>گلدون جدید</b><div class="mut">گلدون ${(G.np+1).toLocaleString('fa-IR')}</div></div><button class="o" onclick="buyPot()">${POTC[G.np].toLocaleString('fa-IR')}$</button></div>`;
+ }
+ if(tab=='shop'){
+  h+=`<h2>ارتقا</h2><div class="card row"><div><b>✂️ قیچی (سطح ${G.sc.toLocaleString('fa-IR')})</b><div class="mut">هر سطح ۱۵٪ وید بیشتر از هر بوته</div></div><button class="o" onclick="upS()" ${G.sc>=MAXL?'disabled':''}>${G.sc>=MAXL?'حداکثر':scC().toLocaleString('fa-IR')+'$'}</button></div>`;
+  h+=`<div class="card row"><div><b>🪴 گلدون‌ها (سطح ${G.pl.toLocaleString('fa-IR')})</b><div class="mut">هر سطح ۱۵٪ زمان رشد کمتر</div></div><button class="o" onclick="upP()" ${G.pl>=MAXL?'disabled':''}>${G.pl>=MAXL?'حداکثر':plC().toLocaleString('fa-IR')+'$'}</button></div>`;
+  h+='<h2>انواع دانه</h2>'+ST.map((s,k)=>`<div class="card row"><div><b>${s.e} ${s.n}</b><div class="mut">${N(Y(k))} گرم · ${N(D(k)/60000)} دقیقه · کاشت ${s.p}$</div></div>${G.seeds[k]?'<span class="mut">داری ✓</span>':`<button onclick="unlock(${k})">${s.c.toLocaleString('fa-IR')}$</button>`}</div>`).join('');
+ }
+ if(tab=='pack'){
+  h+=`<h2>پک کردن</h2><div class="card" style="text-align:center"><div class="em">🌿</div><div class="big">${N(G.raw)}</div><div class="mut">گرم وید خام</div><p class="mut">هر کیسه ${BAG.toLocaleString('fa-IR')} گرم</p><div class="row"><button class="o" style="flex:2" onclick="startPack()">📦 کیسه رو پک کن</button><button class="g" style="flex:1" onclick="pack(1)">پک سریع همه</button></div></div><div class="card" style="text-align:center"><div class="em">📦</div><div class="big">${G.bags.toLocaleString('fa-IR')}</div><div class="mut">کیسه‌ی آماده‌ی فروش</div></div>`;
+ }
+ if(tab=='mkt'){
+  const hs=G.hist,mx=Math.max(...hs,50),mn=Math.min(...hs,30),pt=hs.map((v,i)=>((i/(Math.max(hs.length-1,1)))*200).toFixed(0)+','+(46-(v-mn)/(mx-mn)*42).toFixed(0)).join(' ');
+  const pr=hs.length>1?hs[hs.length-2]:G.price,d=G.price-pr;
+  h+=`<h2>بازار</h2><div class="card" style="text-align:center"><div class="mut">قیمت هر کیسه</div><div class="big ${d>=0?'up':'dn'}">${G.price.toLocaleString('fa-IR')}$ ${d>0?'▲':d<0?'▼':''}</div><div class="mut">تغییر بعدی تا <b id="cd"></b> ثانیه‌ی دیگه</div><svg viewBox="0 0 200 50" style="width:100%;height:80px;margin-top:8px" preserveAspectRatio="none"><polyline points="${pt}" fill="none" stroke="var(--hot)" stroke-width="2" vector-effect="non-scaling-stroke"/></svg></div><div class="card"><p class="mut" style="margin-top:0">تو ${G.bags.toLocaleString('fa-IR')} کیسه داری · ارزش کل ${(G.bags*G.price).toLocaleString('fa-IR')}$</p><div class="row"><button style="flex:1" onclick="sell(0)">بفروش ۱ کیسه</button><button class="o" style="flex:1" onclick="sell(1)">همه رو بفروش</button></div></div>`;
+ }
+ document.getElementById('main').innerHTML=h;tick(true);
+}
+function tick(f){
+ const now=Date.now();let re=false;
+ for(let i=0;i<G.np;i++){const p=G.pots[i];if(!p)continue;const r=(now-p.t)/p.d;
+  if(r>=1){if(!f)re=true;continue}
+  const b=document.getElementById('b'+i),t=document.getElementById('t'+i);
+  if(b)b.style.width=(r*100)+'%';if(t)t.textContent=(s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0'))(Math.ceil((p.d-(now-p.t))/1000)).replace(/\d/g,d=>'۰۱۲۳۴۵۶۷۸۹'[d]);}
+ if(now>=G.next){stepPrice();save();toast('📈 قیمت عوض شد: '+G.price+'$');re=true}
+ const c=document.getElementById('cd');if(c)c.textContent=Math.ceil((G.next-now)/1000).toLocaleString('fa-IR');
+ if(re&&!f)render();
+}
+const PAL=[{l:'#4caf3a',d:'#2c6e22',b:'#6bc84a',b2:'#8ee06a'},{l:'#2f7d3a',d:'#1b4d25',b:'#3f9a4a',b2:'#5cb560'},{l:'#9acd32',d:'#5f8a1c',b:'#b6e04a',b2:'#d2f26b'},{l:'#7a4fb5',d:'#47277a',b:'#9a62d6',b2:'#c08cf0'}];
+const leafG_o=k=>{const c=PAL[k];return [-80,-52,-26,0,26,52,80].map(a=>`<path transform='rotate(${a}) scale(${a?(Math.abs(a)>60?.5:.78):1})' d='M0 0C-4-9-5-22 0-34C5-22 4-9 0 0Z' fill='${c.l}' stroke='${c.d}' stroke-width='.7'/>`).join('')};
+const budG_o=k=>{const c=PAL[k];return `<ellipse rx='7' ry='11' fill='${c.b}'/><circle cx='-4' cy='-6' r='5' fill='${c.b2}'/><circle cx='4' cy='-5' r='5' fill='${c.b2}'/><circle cx='0' cy='-11' r='4.5' fill='${c.b}'/><path d='M-3-8q-4-2-6 1M3-9q4-3 6-1M0-14q1-4 4-4M-3 3q-5 0-6 4M3 4q5 0 6 4' stroke='#ff8a1f' stroke-width='1.4' fill='none' stroke-linecap='round'/><circle cx='-2' cy='-3' r='1' fill='#fff' opacity='.85'/><circle cx='3' cy='-8' r='1' fill='#fff' opacity='.85'/><circle cx='-4' cy='-10' r='.8' fill='#fff' opacity='.85'/>`};
+const budSVG_o=(k,w)=>`<svg viewBox='-13 -22 26 36' width='${w}' height='${w*36/26}'>${budG(k)}</svg>`;
+const BP=[[50,20,0,.95],[35,46,-28,.78],[65,46,28,.78],[39,68,-35,.7],[61,68,35,.7],[50,38,0,.62]];
+function plantSVG_o(k,m){
+ const L=(x,y,r,s)=>`<g transform='translate(${x} ${y}) rotate(${r}) scale(${s})'>${leafG(k)}</g>`;
+ let b='';
+ if(m=='young')b=`<path d='M50 99V82' stroke='#5a9a2c' stroke-width='3' stroke-linecap='round'/>`+L(50,84,-45,.4)+L(50,84,45,.4)+L(50,80,0,.32);
+ else if(m!='empty')b=`<path d='M50 100C50 70 49 50 50 24' stroke='#5a8a2c' stroke-width='3.5' fill='none' stroke-linecap='round'/>`+[[92,62,.85],[76,52,.9],[60,42,.8],[46,30,.65]].map(a=>L(50,a[0],-a[1],a[2])+L(50,a[0],a[1],a[2])).join('')+BP.map(p=>`<g transform='translate(${p[0]} ${p[1]}) rotate(${p[2]}) scale(${p[3]})'><g class='${m=='cut'?'bd':''}'>${budG(k)}</g></g>`).join('');
+ const st=m=='cut'?`style='position:absolute;left:7%;bottom:2px;width:86%;pointer-events:none'`:`height='50'`;
+ return `<svg viewBox='0 0 100 130' ${st}>${b}<path d='M27 103h46l-6 25H33z' fill='#b5651d'/><rect x='24' y='98' width='52' height='9' rx='3' fill='#d08034'/><ellipse cx='50' cy='99' rx='24' ry='3' fill='#4a2c14'/></svg>`}
+const SCN=[['معمولی','#8f9a94','#555d59'],['برنزی','#e0974a','#7a4a1e'],['نقره‌ای','#e3e9ee','#5f6b76'],['طلایی','#ffd24a','#a46a00'],['حماسی','#c77dff','#5a1fa0'],['افسانه‌ای','#ff9a2e','#a32d00'],['اسطوره‌ای','#ff3d7f','#5b0f7a']];
+const TI=[0,1,1,2,2,3,4,4,5,5,6];
+const scSVG=(t,w)=>{const [n,b,h]=SCN[t],m=t==6,f=m?'url(#gm)':b;
+ return `<svg viewBox='0 0 64 64' width='${w}' height='${w}' style='${t>=4?`filter:drop-shadow(0 0 ${t}px ${b})`:''}'>${m?`<defs><linearGradient id='gm' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='#ff3d7f'/><stop offset='.5' stop-color='#b24dff'/><stop offset='1' stop-color='#35e0ff'/></linearGradient></defs>`:''}<g stroke-linecap='round' fill='none'><path d='M20 56L54 8' stroke='${f}' stroke-width='6'/><path d='M44 56L10 8' stroke='${f}' stroke-width='6'/><path d='M22 52L53 9M42 52L11 9' stroke='#fff' stroke-opacity='.55' stroke-width='1.4'/><circle cx='17' cy='57' r='7' stroke='${h}' stroke-width='4'/><circle cx='47' cy='57' r='7' stroke='${h}' stroke-width='4'/></g><circle cx='32' cy='39' r='3.4' fill='${t>=4?'#fff':'#ffd24a'}' stroke='${h}'/>${t>=3?`<path d='M56 6l1.5 4 4 1.5-4 1.5-1.5 4-1.5-4-4-1.5 4-1.5z' fill='#fff'/>`:''}${t>=5?`<path d='M8 20l1 2.6 2.6 1-2.6 1-1 2.6-1-2.6-2.6-1 2.6-1z' fill='#fff'/>`:''}</svg>`};
+function startCut(i){
+ const p=G.pots[i],t=TI[G.sc];
+ const s=openOv('<div class="msg" id="msg"></div>'+plantSVG(p.s,'cut')+`<div id='sc' style='left:85%;top:80%'>${scSVG(t,60)}</div>`);
+ let left=s.querySelectorAll('.bd').length;
+ const msg=()=>document.getElementById('msg').textContent='قیچی رو روی گل‌ها بکش · باقی‌مانده: '+left.toLocaleString('fa-IR');msg();
+ const mv=e=>{const r=s.getBoundingClientRect(),sc=document.getElementById('sc');sc.style.left=(e.clientX-r.left)+'px';sc.style.top=(e.clientY-r.top)+'px';
+  s.querySelectorAll('.bd:not(.fall)').forEach(b=>{const q=b.getBoundingClientRect();
+   if(Math.hypot(e.clientX-(q.left+q.width/2),e.clientY-(q.top+q.height/2))<38){b.classList.add('fall');left--;msg();
+    sc.animate([{transform:'translate(-50%,-50%) rotate(-30deg) scale(1.35)'},{transform:'translate(-50%,-50%) rotate(-30deg) scale(1)'}],160);
+    if(left==0)setTimeout(()=>{G.raw+=Y(p.s);G.pots[i]=null;save();closeOv();toast('+'+N(Y(p.s))+' گرم وید ✂️');render()},600)}})};
+ s.onpointermove=s.onpointerdown=mv;
+}
+function startPack2(k){
+ if(k==null)k=[0,1,2,3].find(x=>G.rs[x]>=BAG);
+ if(k==null||G.rs[k]<BAG)return toast('حداقل ۱۰ گرم از یه نوع لازمه');
+ const n=5;let pk=0,done=0;
+ const s=openOv(`<div class='msg' id='msg'>گل‌ها رو بکش تو کیسه 👇</div>`+Array.from({length:n},(_,i)=>`<div class='bud pk' style='left:${18+i*16}%;top:${20+(i%2)*13}%'>🌿</div>`).join('')+`<div class='zb big' id='zbag' style='--sc:${PAL[k].b}'><div class='zr' id='zr'><div id='zh'>⟶</div></div><div class='in' id='in'></div><div class='lab'>${ST[k].n} · ۱۰ گرم</div></div>`);
+ const msg=t=>document.getElementById('msg').textContent=t;
+ const fin=()=>{if(done)return;done=1;const zr=document.getElementById('zr'),h=document.getElementById('zh');h.style.left=(zr.clientWidth-30)+'px';zr.classList.add('shut');msg('✅ بسته شد');setTimeout(()=>{G.rs[k]-=BAG;G.bs[k]++;save();closeOv();toast('📦 یه کیسه '+ST[k].n+' پک شد');render()},700)};
+ const drop=b=>{b.remove();pk++;document.getElementById('in').insertAdjacentHTML('beforeend','<i>🌿</i>');
+  if(pk<n)return msg('گل‌ها رو بکش تو کیسه · '+pk.toLocaleString('fa-IR')+'/'+n.toLocaleString('fa-IR'));
+  msg('حالا زیپ رو تا آخر بکش 👉');const h=document.getElementById('zh'),zr=document.getElementById('zr');h.style.display='flex';let dr=0,mv=0;
+  h.onpointerdown=e=>{dr=1;mv=0;h.setPointerCapture(e.pointerId)};
+  h.onpointermove=e=>{if(!dr||done)return;mv++;const r=zr.getBoundingClientRect(),x=Math.max(0,Math.min(zr.clientWidth-30,e.clientX-r.left-15));h.style.left=x+'px';if(x>=zr.clientWidth-40)fin()};
+  h.onpointerup=()=>{dr=0;if(mv<3)fin()}};
+ s.querySelectorAll('.pk').forEach(b=>{let dr=0,mv=0;
+  b.onpointerdown=e=>{dr=1;mv=0;b.setPointerCapture(e.pointerId);b.style.zIndex=3};
+  b.onpointermove=e=>{if(!dr)return;mv++;const r=s.getBoundingClientRect();b.style.left=(e.clientX-r.left)+'px';b.style.top=(e.clientY-r.top)+'px'};
+  b.onpointerup=e=>{if(!dr)return;dr=0;const q=document.getElementById('zbag').getBoundingClientRect();
+   if(mv<3||(e.clientX>q.left&&e.clientX<q.right&&e.clientY>q.top&&e.clientY<q.bottom))drop(b)}});
+}
+const _sp=startPack2;startPack=function(k){_sp(k);document.querySelectorAll('#stage .pk').forEach(b=>b.innerHTML=budSVG(G.sel,40))};
+function decorate(){
+ if(tab!='shop')return;
+ const u=document.querySelector('[onclick*=upS]');if(!u)return;
+ const card=u.closest('.card'),t=TI[G.sc],nx=G.sc<MAXL?SCN[TI[G.sc+1]][0]:'';
+ card.firstElementChild.innerHTML=`<div class='row' style='justify-content:flex-start'><span class='sci'>${scSVG(t,52)}</span><div><b>قیچی «${SCN[t][0]}» · سطح ${G.sc.toLocaleString('fa-IR')}</b><div class='mut'>هر سطح ۱۵٪ وید بیشتر${nx&&nx!=SCN[t][0]?' · بعدی: '+nx:''}</div></div></div>`;
+ card.insertAdjacentHTML('afterend',`<div class='card'><b>🏆 کلکسیون قیچی‌ها</b><div class='coll'>${SCN.map((s,i)=>`<div class='ci ${i<=t?'':'lk'}'>${scSVG(i,44)}<small style='border-bottom:3px solid ${s[1]}'>${s[0]}</small>${i>t?'<em>🔒</em>':''}</div>`).join('')}</div></div>`)}
+const LF='M0 0L-2.2-4-4-6-2.6-9-5-12-3.2-15-4.6-19-2.4-22-3-26-1-29 0-35 1-29 3-26 2.4-22 4.6-19 3.2-15 5-12 2.6-9 4-6 2.2-4Z';
+const leafG=k=>{const c=PAL[k];return [[-84,.42],[-58,.68],[-30,.9],[0,1.05],[30,.9],[58,.68],[84,.42]].map(a=>`<g transform='rotate(${a[0]}) scale(${a[1]})'><path d='${LF}' fill='${c.l}' stroke='${c.d}' stroke-width='.8' stroke-linejoin='round'/><path d='M0-3V-31' stroke='${c.b2}' stroke-width='.9' opacity='.75'/></g>`).join('')};
+const budG=k=>{const c=PAL[k];
+ return `<path d='M0 13L-10 19L-5 10ZM0 13L10 19L5 10Z' fill='${c.l}' stroke='${c.d}' stroke-width='.6'/><path d='M0 13C-10 9-11-6-6-14C-3-20 3-20 6-14C11-6 10 9 0 13Z' fill='${c.b}' stroke='${c.d}' stroke-width='.8'/>`
+ +[[-4,-9,4.4],[4,-9,4.4],[0,-15,4.1],[-5,-1,4.7],[5,-1,4.7],[0,-4,4.5],[-3,6,4.2],[3,6,4.2]].map(a=>`<circle cx='${a[0]}' cy='${a[1]}' r='${a[2]}' fill='${c.b2}' stroke='${c.d}' stroke-width='.5' opacity='.9'/>`).join('')
+ +`<path d='M-3-10q-4-3-6-1M3-12q4-4 7-2M-5-2q-5-1-6 3M5-3q5-1 6 3M-2 3q-4 2-4 6M2 5q4 1 5 5M0-18q0-4 3-5' stroke='#ff8a1f' stroke-width='1.3' fill='none' stroke-linecap='round'/><path d='M-3-10q-4-3-6-1M5-3q5-1 6 3M0-18q0-4 3-5' stroke='#ffd08a' stroke-width='.5' fill='none'/>`
+ +[[-2,-6],[3,-11],[-4,-12],[4,-2],[-5,2],[1,2],[0,-16],[-2,8]].map(a=>`<circle cx='${a[0]}' cy='${a[1]}' r='.8' fill='#fff' opacity='.9'/>`).join('')};
+const budSVG_n=(k,w)=>`<svg viewBox='-13 -22 26 44' width='${w}' height='${w*44/26}'>${budG(k)}</svg>`;
+const BP2=[[50,20,0,1.05],[31,44,-24,.88],[69,44,24,.88],[33,69,-34,.78],[67,69,34,.78]];
+function plantSVG(k,m){return m=='young'?'🌱':m=='empty'?'🪴':ST[k].e}
+function plantSVG_n(k,m){
+ const c=PAL[k],L=(x,y,r,s)=>`<g transform='translate(${x} ${y}) rotate(${r}) scale(${s})'>${leafG(k)}</g>`;
+ let b='';
+ if(m=='young')b=`<path d='M50 99V84' stroke='#6aa83a' stroke-width='3' stroke-linecap='round'/><ellipse cx='44' cy='84' rx='6' ry='3.5' fill='#8ed05a' transform='rotate(-20 44 84)'/><ellipse cx='56' cy='84' rx='6' ry='3.5' fill='#8ed05a' transform='rotate(20 56 84)'/>`+L(50,83,0,.4);
+ else if(m!='empty')b=`<path d='M50 102C51 80 49 55 50 28' stroke='${c.d}' stroke-width='5' fill='none' stroke-linecap='round'/><path d='M50 102C51 80 49 55 50 28' stroke='#6aa83a' stroke-width='3' fill='none' stroke-linecap='round'/>`
+  +BP2.slice(1).map(p=>`<path d='M50 ${p[1]+22}Q${(50+p[0])/2} ${p[1]+14} ${p[0]} ${p[1]+6}' stroke='#6aa83a' stroke-width='2.2' fill='none' stroke-linecap='round'/>`).join('')
+  +L(50,92,-72,.95)+L(50,92,72,.95)+L(50,78,-62,.85)+L(50,78,62,.85)+L(50,62,-52,.72)+L(50,62,52,.72)
+  +BP2.map(p=>`<g transform='translate(${p[0]} ${p[1]}) rotate(${p[2]}) scale(${p[3]*.82})'><g class='${m=='cut'?'bd':''}'>${budG(k)}</g></g>`).join('');
+ const st=m=='cut'?`style='position:absolute;left:7%;bottom:2px;width:86%;pointer-events:none'`:`height='50'`;
+ return `<svg viewBox='0 0 100 130' ${st}>${b}<path d='M27 103h46l-6 25H33z' fill='#b5651d'/><rect x='24' y='98' width='52' height='9' rx='3' fill='#d08034'/><ellipse cx='50' cy='99' rx='24' ry='3' fill='#4a2c14'/></svg>`}
+const budSVG=()=>'🌿';
+function startCut(i){
+ const p=G.pots[i],t=TI[G.sc],B=[[30,28],[70,26],[22,50],[78,48],[42,38],[60,36]];let left=B.length;
+ const s=openOv(`<div class='msg' id='msg'></div><div class='stalk'></div><div class='potem'>🪴</div>`+B.map(b=>`<div class='bud' style='left:${b[0]}%;top:${b[1]}%'>🌿</div>`).join('')+`<div id='sc' style='left:85%;top:80%'>${scSVG(t,60)}</div>`);
+ const msg=()=>document.getElementById('msg').textContent='قیچی رو روی گل‌ها بکش · باقی‌مانده: '+left.toLocaleString('fa-IR');msg();
+ const mv=e=>{const r=s.getBoundingClientRect(),sc=document.getElementById('sc');sc.style.left=(e.clientX-r.left)+'px';sc.style.top=(e.clientY-r.top)+'px';
+  s.querySelectorAll('.bud:not(.fall)').forEach(b=>{const q=b.getBoundingClientRect();
+   if(Math.hypot(e.clientX-(q.left+q.width/2),e.clientY-(q.top+q.height/2))<36){b.classList.add('fall');left--;msg();
+    if(left==0)setTimeout(()=>{G.raw+=Y(p.s);G.pots[i]=null;save();closeOv();toast('+'+N(Y(p.s))+' گرم وید ✂️');render()},600)}})};
+ s.onpointermove=s.onpointerdown=mv;
+}
+let CURK=0;const MULT=[1,1.2,1.5,2];
+if(!G.rs){G.rs=[G.raw||0,0,0,0];G.bs=[G.bags||0,0,0,0]}
+const sm=a=>a.reduce((x,y)=>x+y,0);
+function takeBags(q){for(let k=0;k<4&&q>0;k++){const t=Math.min(G.bs[k],q);G.bs[k]-=t;q-=t}}
+function takeRaw(q){for(let k=0;k<4&&q>0;k++){const t=Math.min(G.rs[k],q);G.rs[k]-=t;q-=t}}
+Object.defineProperty(G,'raw',{get:()=>sm(G.rs),set:v=>{const d=v-sm(G.rs);if(d>0)G.rs[CURK]+=d;else if(d<0)takeRaw(-d)},enumerable:false,configurable:true});
+Object.defineProperty(G,'bags',{get:()=>sm(G.bs),set:v=>{const d=v-sm(G.bs);if(d>0)G.bs[CURK]+=d;else if(d<0)takeBags(-d)},enumerable:false,configurable:true});
+const _sc0=startCut;startCut=function(i){CURK=G.pots[i].s;_sc0(i)};
+function sellBag(k,all){const n=all?G.bs[k]:Math.min(1,G.bs[k]);if(!n)return toast('از این کیسه نداری');const v=n*Math.round(G.price*MULT[k]);G.bs[k]-=n;G.m+=v;save();toast('💰 +'+v.toLocaleString('fa-IR')+'$ · '+n.toLocaleString('fa-IR')+' کیسه '+ST[k].n);render()}
+function quickPack(){let t=0;for(let k=0;k<4;k++){const n=Math.floor(G.rs[k]/BAG);G.rs[k]-=n*BAG;G.bs[k]+=n;t+=n}if(!t)return toast('حداقل ۱۰ گرم لازمه');save();toast('📦 '+t.toLocaleString('fa-IR')+' کیسه پک شد');render()}
+const own=k=>G.seeds[k]||G.rs[k]>0||G.bs[k]>0;
+function shelf(){const F=x=>x.toLocaleString('fa-IR');return `<div class='sh'>${[0,1,2,3].filter(own).map(k=>{const n=G.bs[k],pr=Math.round(G.price*MULT[k]);return `<div style='flex:none;text-align:center'><div class='zb ${n?'':'e'}' style='--sc:${PAL[k].b}' data-p='sell:${k}'><div class='zr shut'></div><div class='in'>${'<i>🌿</i>'.repeat(Math.min(n,6))}</div><div class='lab'>${ST[k].n}</div></div><b>${F(n)}×</b> <span class='mut'>${F(pr)}$</span><br><button class='o sm' data-p='all:${k}' ${n?'':'disabled'}>همه</button></div>`}).join('')}</div>`}
+function packUI(){
+ if(tab!='pack'&&tab!='mkt')return;
+ const main=document.getElementById('main');
+ if(tab=='pack')main.innerHTML=`<h2>پک کردن</h2>`+[0,1,2,3].filter(own).map(k=>`<div class='card row'><div class='row' style='justify-content:flex-start'><span class='em'>${ST[k].e}</span><div><b>${ST[k].n}</b><div class='mut'>${N(G.rs[k])} گرم وید خام</div></div></div><button class='o' data-pk='${k}' ${G.rs[k]>=BAG?'':'disabled'}>📦 پک کن</button></div>`).join('')+`<button class='g' style='width:100%;margin-bottom:12px' data-q='1'>پک سریع همه</button><h2>کیسه‌های آماده</h2><div class='mut'>روی هر کیسه بزنی یکی‌ش فروخته میشه</div>`+shelf();
+ else{const c=main.querySelectorAll('.card')[1];if(c)c.innerHTML=`<b>کیسه‌هات</b><div class='mut'>روی هر کیسه بزن تا یکی‌ش فروخته بشه · قیمت نوع‌های بهتر بیشتره</div>`+shelf()}
+ main.onclick=e=>{const a=e.target.closest('[data-p]');if(a){const [t,k]=a.dataset.p.split(':');return sellBag(+k,t=='all')}const q=e.target.closest('[data-pk]');if(q)return startPack(+q.dataset.pk);if(e.target.closest('[data-q]'))quickPack()};
+}
+const CN=['رضا','علی','سارا','مهدی','نگار','کیان','پویا','لیلا','امیر','مینا'],CA=['🧑','👩','🧔','👱','👨‍🦱','👩‍🦰'];
+const MOOD=[{f:[.65,.9],t:'بودجه‌م کمه، یه قیمت خوب بده 🙏'},{f:[.95,1.2],t:'فقط قیمت منصفانه باشه 🙂'},{f:[1.25,1.7],t:'کیفیت مهمه، پول مشکلی نیست 😎'}];
+G.cu=G.cu||[];G.nc=G.nc||Date.now()+8000;
+function spawnC(){
+ const m=Math.floor(Math.random()*3),M=MOOD[m],mx=Math.round(G.price*(M.f[0]+Math.random()*(M.f[1]-M.f[0])));
+ G.cu.push({id:Date.now(),n:CN[Math.floor(Math.random()*CN.length)],av:CA[Math.floor(Math.random()*CA.length)],want:1+Math.floor(Math.random()*(2+G.np*1.5)),mood:m,max:Math.max(5,mx),o:G.price,exp:Date.now()+240000});
+ save();toast('💬 پیام جدید');render()}
+setInterval(()=>{const n=Date.now(),b=G.cu.length;G.cu=G.cu.filter(c=>c.exp>n);
+ if(G.cu.length<b){save();render()}
+ if(n>=G.nc&&G.cu.length<4){G.nc=n+30000+Math.random()*40000;spawnC()}else if(n>=G.nc)G.nc=n+10000},1000);
+function msgUI(){
+ const nav=document.getElementById('nav'),b=document.createElement('b'),n=G.cu.length;
+ b.className=tab=='msg'?'on':'';b.innerHTML='<span>💬</span>پیام‌ها'+(n?`<i class='bdg'>${n.toLocaleString('fa-IR')}</i>`:'');b.onclick=()=>go('msg');nav.insertBefore(b,nav.lastElementChild);
+ if(tab!='msg')return;
+ const main=document.getElementById('main'),F=x=>x.toLocaleString('fa-IR');
+ main.innerHTML=`<h2>پیام مشتری‌ها</h2><div class='mut' style='margin-bottom:8px'>قیمت بازار الان: ${F(G.price)}$ · داری: ${F(G.bags)} کیسه</div>`
+ +(G.cu.length?G.cu.map(c=>{const q=Math.min(G.bags,c.want),d=(c.o-G.price)*q;return `<div class='card'><div class='row' style='justify-content:flex-start'><span class='av'>🥷</span><b>ناشناس ${F(c.id%1000)}</b></div><div class='bub'>سلام! من ${F(c.want)} کیسه وید می‌خوام. ${MOOD[c.mood].t}</div><div class='row' style='justify-content:center;gap:6px'>${[-5,-1].map(x=>`<button class='g sm' data-a='adj:${c.id}:${x}'>${F(x)}</button>`).join('')}<b style='font-size:24px;min-width:70px;text-align:center'>${F(c.o)}$</b>${[1,5].map(x=>`<button class='g sm' data-a='adj:${c.id}:${x}'>+${F(x)}</button>`).join('')}</div><div class='mut' style='text-align:center;margin:6px 0'>قیمت هر کیسه${q<c.want?' · فقط '+F(q)+' کیسه داری':''}${q?' · <span class='+(d>=0?'up>سود':'dn>ضرر')+' نسبت به بازار: '+F(Math.abs(d))+'$</span>':''}</div><div class='row'><button class='o' style='flex:2' data-a='sell:${c.id}' ${q?'':'disabled'}>بفروش ${F(q)} کیسه</button><button class='g' style='flex:1' data-a='no:${c.id}'>رد کن</button></div></div>`}).join(''):`<div class='card mut' style='text-align:center'>فعلاً پیامی نیست. مشتری‌ها هر چند دقیقه پیام می‌دن 💬</div>`);
+ main.onclick=e=>{const a=e.target.closest('[data-a]');if(!a)return;const [t,id,v]=a.dataset.a.split(':'),c=G.cu.find(x=>x.id==id);if(!c)return;
+  if(t=='adj')c.o=Math.max(1,Math.min(400,c.o+ +v));
+  else{G.cu=G.cu.filter(x=>x!=c);
+   if(t=='sell'){const q=Math.min(G.bags,c.want);
+    if(c.o>c.max)toast('😤 '+'ناشناس'+' گفت گرونه و رفت');
+    else{G.bags-=q;G.m+=q*c.o;const d=(c.o-G.price)*q;toast(d>=0?'✅ +'+F(q*c.o)+'$ · '+F(d)+'$ بالاتر از بازار':'⚠️ +'+F(q*c.o)+'$ · '+F(-d)+'$ زیر بازار (ضرر)')}}
+   else toast('رد شد')}
+  save();render()};
+}
+const ACN=['جنگلی','بنفش هیز','طلایی','صورتی','اقیانوسی'];
+const ACC=[null,['#7a4fb5','#b98cff','#e8871e','#ffa63d'],['#b07a00','#ffcf4a','#3d8b2f','#7bd35a'],['#d6336c','#ff7aa8','#7a4fb5','#b98cff'],['#1c8fb0','#4fd3f0','#e8871e','#ffa63d']];
+const POTS=[['#b5651d','#d08034','سفالی'],['#5b6770','#7d8a94','سنگی'],['#7a4fb5','#9a62d6','بنفش'],['#c9a227','#ffd24a','طلایی'],['#2a2a2a','#555555','مشکی']];
+G.th=G.th||{mode:'auto',ac:0,pot:0};
+function applyTheme(){
+ const r=document.documentElement,t=G.th,st=r.style,dk=t.mode=='dark'||t.mode=='amoled'||(t.mode=='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);
+ if(t.mode=='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',t.mode=='light'?'light':'dark');
+ ['--ac','--hot','--bg','--card','--bar','--bd'].forEach(p=>st.removeProperty(p));
+ const A=ACC[t.ac];if(A){st.setProperty('--ac',dk?A[1]:A[0]);st.setProperty('--hot',dk?A[3]:A[2])}
+ if(t.mode=='amoled'){st.setProperty('--bg','#000');st.setProperty('--card','#0b0f0a');st.setProperty('--bar','#161d13');st.setProperty('--bd','#222c1e')}
+}
+const _ps=plantSVG;plantSVG=function(k,m){const c=POTS[G.th.pot]||POTS[0];return _ps(k,m).replace('#b5651d',c[0]).replace('#d08034',c[1])};
+function themeUI(){
+ const nav=document.getElementById('nav'),b=document.createElement('b');
+ b.className=tab=='theme'?'on':'';b.innerHTML='<span>🎨</span>تم';b.onclick=()=>go('theme');nav.appendChild(b);
+ if(tab!='theme')return;
+ const t=G.th,main=document.getElementById('main'),W=' style="flex-wrap:wrap"';
+ const ch=(k,on,label,x)=>`<div class='chip ${on?'on':''}' data-k='${k}'>${x||''}${label}</div>`;
+ const dot=c=>`<span style='display:inline-block;width:14px;height:14px;border-radius:50%;background:${c};vertical-align:middle;margin-left:6px'></span>`;
+ main.innerHTML=`<h2>شخصی‌سازی</h2><div class='card row' style='justify-content:center;gap:24px'>${plantSVG(G.sel,'ready').replace("height='50'","height='110'")}${scSVG(TI[G.sc],70)}</div>`
+ +`<h2>حالت نمایش</h2><div class='chips'${W}>${[['auto','خودکار'],['light','روشن'],['dark','تیره'],['amoled','شب سیاه']].map(m=>ch('mode:'+m[0],t.mode==m[0],m[1])).join('')}</div>`
+ +`<h2>رنگ بازی</h2><div class='chips'${W}>${ACN.map((n,i)=>ch('ac:'+i,t.ac==i,n,dot(ACC[i]?ACC[i][0]:'#3d8b2f'))).join('')}</div>`
+ +`<h2>رنگ گلدون</h2><div class='chips'${W}>${POTS.map((p,i)=>ch('pot:'+i,t.pot==i,p[2],dot(p[0]))).join('')}</div>`;
+ main.onclick=e=>{const c=e.target.closest('[data-k]');if(!c)return;const [a,v]=c.dataset.k.split(':');G.th[a]=a=='mode'?v:+v;save();applyTheme();render()};
+}
+applyTheme();
+const _r=render;render=function(){_r();decorate();themeUI();msgUI();packUI()};
+render();setInterval(tick,250);
+</script>
+</body>
+</html>
